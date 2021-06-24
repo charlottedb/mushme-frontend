@@ -34,31 +34,11 @@ if submit:
     # TODO: send a request to fastAPI
     #prediction = predict(img)
     #st.write(prediction)
-else :
-    st.write("Sorry, something went wrong with your upload")   
-
-#2ND STEP
-st.header("LET THE MAGIC HAPPEN")
-
-st.progress(2)
 
 
-col1, col2 = st.beta_columns(2)
+col1 = st.beta_columns(2)
 with col1:
     st.subheader('YOUR PICTURE')
-    st.image(uploaded_file, width=None, use_column_width=None) 
-with col2:
-    st.subheader('OUR GUESS')
     st.image(uploaded_file, width=None, use_column_width=None)
-
-#output display data
-
-st.write('RESULTS')
-st.write(pd.DataFrame({
-'Mushroom Name': ['MODEL INPUT'],
-'Probability': ['MODEL INPUT'],
-'Edibility': ['MODEL INPUT'],
-#'Comment': ['Careful, morel season is between september and october'],
-}))
 
 
