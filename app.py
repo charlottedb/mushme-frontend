@@ -37,8 +37,7 @@ if submit:
 
 
 col1 = st.beta_columns(2)
-with col1:
-    st.subheader('YOUR PICTURE')
-    st.image(uploaded_file, width=None, use_column_width=None)
+st.subheader('YOUR PICTURE')
+st.image(uploaded_file, width=None, use_column_width=None)
 
 
