@@ -29,11 +29,14 @@ uploaded_file = st.file_uploader("Choose a file", accept_multiple_files=True)
 submit = st.button("Submit")
 if submit:
     st.write("You succesfully uploaded your mushroom picture.")
-    image_data = uploaded_file[0].read()
-    img = Image.open(io.BytesIO(image_data))
+    image_data = uploaded_file[0]
+    #img = Image.open(io.BytesIO(image_data))
+    url = 'https://mush-me-gk64mr347q-oa.a.run.app/predict'
+    files = {'file': image_data}
+    res = requests.post(url, files=files)
     # TODO: send a request to fastAPI
     #prediction = predict(img)
-    #st.write(prediction)
+    st.write(res.json())
 
 
 col1 = st.beta_columns(2)
