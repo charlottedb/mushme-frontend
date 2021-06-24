@@ -2,7 +2,8 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 from PIL import Image
-import io
+
+from name2edibility import name2edibility
 
 import requests
 
@@ -36,7 +37,10 @@ if submit:
     res = requests.post(url, files=files)
     # TODO: send a request to fastAPI
     #prediction = predict(img)
-    st.write(res.json())
+    pred = res.json()
+    df_pred = pd.DataFrame(pred)
+    df_pred["Edibility"] = df_pred["Species"].apply(name2edibility.get)
+    st.write(df_pred)
 
 
 col1 = st.beta_columns(2)
